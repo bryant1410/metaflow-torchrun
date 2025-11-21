@@ -6,18 +6,18 @@ This repository implements a plugin to run parallel Metaflow tasks as nodes in a
 ### Features
 - <b>Automatic torchrun integration:</b> This extension provides a simple and intuitive way to incorporate PyTorch distributed programs in your Metaflow workflows using the `@torchrun` decorator
 - <b>No changes to model code:</b> The `@torchrun` decorator exposes a new method on the Metaflow current object, so you can run your existing torch distributed programs inside Metaflow tasks with no changes in the research code.
-- <b>Run one command:</b> You don't need to log into many nodes and run commands on each. Instead, the `@torchrun` decorator will select arguments for the torchrun command based on the requests in Metaflow compute decorators like number of GPUs. Network addresses are automatically discoverable. 
+- <b>Run one command:</b> You don't need to log into many nodes and run commands on each. Instead, the `@torchrun` decorator will select arguments for the torchrun command based on the requests in Metaflow compute decorators, like the number of GPUs. Network addresses are automatically discoverable. 
 - <b>No user-facing subprocess calls:</b> At the end of the day, `@torchrun` is calling a subprocess inside a Metaflow task. Although many Metaflow users do this, it can make code difficult to read for beginners. One major goal of this plugin is to motivate hardening and automating a pattern for submitting subprocess calls inside Metaflow tasks.
 
 ### Installation
 You can install it with:
-```
+```bash
 pip install metaflow-torchrun
 ```
 
 ### Getting Started
-And then you can import it and use in parallel steps:
-```
+And then you can import it and use it in parallel steps:
+```python
 from metaflow import FlowSpec, step, torchrun
 
 ...
